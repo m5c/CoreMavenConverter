@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <modelVersion>4.0.0</modelVersion>
+
+ <groupId>ca.mcgill.sel</groupId>
+ <artifactId>touchcore</artifactId>
+ <version>1.0.0-SNAPSHOT</version>
+ <packaging>pom</packaging>
+
+<profiles>
+      	<profile>
+        	 <id>classic</id>
+		  <modules>
+			  <module>core-commons</module>
+			  <module>core-kernel</module>
+			  <module>core-evaluator</module>
+			  <module>core-edit</module>
+			  <module>core-weaver</module>
+		  </modules>
+	</profile>
+      	<profile>
+        	 <id>libs</id>
+		  <modules>
+			  <module>core-commons</module>
+			  <module>core-kernel</module>
+			  <module>core-evaluator</module>
+		  </modules>
+	</profile>
+</profiles>
+ 
+<!-- Eclipse plugin dependencies-->
+<!--This sections declares dependencies, shared by multiple modules-->
+<!-- command to generate the block is:
+cd .m2/repository;
+for i in p2/osgi/bundle/*; do echo "<dependency>"; echo "  <groupId>p2.osgi.bundle</groupId>"; echo "  <artifactId>$(echo $i | cut -f4 -d "/")</artifactId>"; echo "  <version>$(ls $i)</version>"; echo "</dependency>"; echo ""; done > /tmp/eclipse-plugin-dependencies.txt
+-->
+  <dependencies>
+
+DEPENDENCIES_FLAG
+
+  </dependencies>
+
+</project>

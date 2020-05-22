@@ -1,0 +1,336 @@
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.core.runtime</artifactId>
+  <version>3.17.0.v20191122-2104.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.osgi</artifactId>
+  <version>3.15.100.v20191114-1701.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.osgi.compatibility.state</artifactId>
+  <version>1.1.600.v20190814-1451.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.equinox.common</artifactId>
+  <version>3.10.600.v20191004-1420.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.core.jobs</artifactId>
+  <version>3.10.600.v20191122-2104.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.equinox.registry</artifactId>
+  <version>3.8.600.v20191017-2055.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.equinox.preferences</artifactId>
+  <version>3.7.600.v20191017-2055.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.core.contenttype</artifactId>
+  <version>3.7.500.v20190916-2125.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.equinox.app</artifactId>
+  <version>1.4.300.v20190815-1535.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.ecore</artifactId>
+  <version>2.20.0.v20190920-0401.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.common</artifactId>
+  <version>2.17.0.v20190920-0401.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+  <version>2.16.0.v20190528-0725.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.uml2.uml.resources</artifactId>
+  <version>5.5.0.v20181203-1331.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.uml2.uml</artifactId>
+  <version>5.5.0.v20181203-1331.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.uml2.common</artifactId>
+  <version>2.5.0.v20181203-1331.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.uml2.types</artifactId>
+  <version>2.5.0.v20181203-1331.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
+  <version>2.11.0.v20180706-1146.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
+  <version>1.5.0.v20181203-1331.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.ecore</artifactId>
+  <version>3.14.1.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl</artifactId>
+  <version>3.10.400.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.common</artifactId>
+  <version>1.8.400.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.xtext.oclinecore</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.xtext.essentialocl</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.xtext.base</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.pivot</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.jdt.annotation</artifactId>
+  <version>2.2.400.v20191120-1313.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.edit</artifactId>
+  <version>2.16.0.v20190920-0401.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.ecore.change</artifactId>
+  <version>2.14.0.v20190528-0725.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext</artifactId>
+  <version>2.20.0.v20191202-0915.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe.core</artifactId>
+  <version>1.5.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+  <version>2.11.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe.utils</artifactId>
+  <version>1.5.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.util</artifactId>
+  <version>2.20.0.v20191202-0915.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.xtext.oclstdlib</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.ocl.xtext.completeocl</artifactId>
+  <version>1.10.0.v20191209-1145.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf</artifactId>
+  <version>2.8.0.v20180706-1146.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.acceleo.engine</artifactId>
+  <version>3.7.9.201911060712.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.acceleo.common</artifactId>
+  <version>3.7.9.201911060712.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.acceleo.model</artifactId>
+  <version>3.7.9.201911060712.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.acceleo.profiler</artifactId>
+  <version>3.7.9.201911060712.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
+  <version>2.20.0.v20191012-0918.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.codegen</artifactId>
+  <version>2.19.0.v20190821-1536.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.xbase</artifactId>
+  <version>2.20.0.v20191202-0933.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.common.types</artifactId>
+  <version>2.20.0.v20191202-0933.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtend.lib</artifactId>
+  <version>2.20.0.v20191202-0907.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.xbase.lib</artifactId>
+  <version>2.20.0.v20191202-0907.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtend.lib.macro</artifactId>
+  <version>2.20.0.v20191202-0907.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.junit4</artifactId>
+  <version>2.20.0.v20191202-1016.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.xtext.generator</artifactId>
+  <version>2.20.0.v20191202-0915.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+  <version>2.11.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe2.language</artifactId>
+  <version>2.11.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.emf.mwe2.lib</artifactId>
+  <version>2.11.1.v20191121-1148.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtext.generator</artifactId>
+  <version>2.20.0.v20191202-0933.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtend</artifactId>
+  <version>2.2.0.v201605260315.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xpand</artifactId>
+  <version>2.2.0.v201605260315.jar</version>
+</dependency>
+
+<dependency>
+  <groupId>p2.osgi.bundle</groupId>
+  <artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
+  <version>2.2.0.v201605260315.jar</version>
+</dependency>
+
