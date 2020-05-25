@@ -31,6 +31,7 @@ function copyAndMergeSources()
 ## Declare array with CORE projects names of things we want to preserve:
 PreserveCoreProjects=(
 "ca.mcgill.sel.core"
+"ca.mcgill.sel.core.controller"
 "ca.mcgill.sel.core.edit"
 "ca.mcgill.sel.commons")
 
@@ -42,6 +43,7 @@ PreserveRamProjects=(
 "ca.mcgill.sel.classdiagram.edit"
 "ca.mcgill.sel.restif"
 "ca.mcgill.sel.restif.edit"
+"ca.mcgill.sel.ram.controller"
 "ca.mcgill.sel.ram.expressions"
 "ca.mcgill.sel.ram.expressions.ide"
 "ca.mcgill.sel.ram.expressions.tests"
@@ -125,23 +127,38 @@ VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
 # merges the generated maven dependency block into the parent pom template
 function createParentPom() {
 	## print template until flag
-	sed '/DEPEN/q' parent-pom.xml | grep -v DEPENDENCIES_FLAG > pom.xml
+	sed '/DEPEN/q' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG > pom.xml
 	## insert generated dependency block
 	cat PARENTDEPS.txt >> pom.xml
 	## print template after flag
-	sed -n '/DEPEN/,$p' parent-pom.xml | grep -v DEPENDENCIES_FLAG >> pom.xml
+	sed -n '/DEPEN/,$p' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG >> pom.xml
 
 	## move the generated pom to the generated repository root.
 	mv pom.xml $TARGET
 
-	echo "Created parent root with full EMF dependency list at $TARGET/pom.xml"
+	echo " * Full EMF dependency list fused into parent template, stored at $TARGET/pom.xml"
 }
 
 # copies prepared custom poms for the individual projects into the repository, to refer to them as maven modules
 function createModulePoms() {
 	
-  ## currently only commons supported
-  cp pom-commons.xml $TARGET/ca.mcgill.sel.commons/pom.xml
+  cp poms/pom-classdiagram.xml $TARGET/ca.mcgill.sel.classdiagram/pom.xml
+  cp poms/pom-classdiagramedit.xml $TARGET/ca.mcgill.sel.classdiagram.edit/pom.xml
+  cp poms/pom-commons.xml $TARGET/ca.mcgill.sel.commons/pom.xml
+  cp poms/pom-core.xml $TARGET/ca.mcgill.sel.core/pom.xml
+  cp poms/pom-corecontroller.xml $TARGET/ca.mcgill.sel.core.controller/pom.xml
+  cp poms/pom-coreedit.xml $TARGET/ca.mcgill.sel.core.edit/pom.xml
+  cp poms/pom-ram.xml $TARGET/ca.mcgill.sel.ram/pom.xml
+  cp poms/pom-ramcontroller.xml $TARGET/ca.mcgill.sel.ram.controller/pom.xml
+  cp poms/pom-ramedit.xml $TARGET/ca.mcgill.sel.ram.edit/pom.xml
+  cp poms/pom-ramexpressions.xml $TARGET/ca.mcgill.sel.ram.expressions/pom.xml
+  cp poms/pom-ramexpressionside.xml $TARGET/ca.mcgill.sel.ram.expressions.ide/pom.xml
+  cp poms/pom-ramexpressionstests.xml $TARGET/ca.mcgill.sel.ram.expressions.tests/pom.xml
+  cp poms/pom-ramexpressionsui.xml $TARGET/ca.mcgill.sel.ram.expressions.ui/pom.xml
+  cp poms/pom-restif.xml $TARGET/ca.mcgill.sel.restif/pom.xml
+  cp poms/pom-restifedit.xml $TARGET/ca.mcgill.sel.restif.edit/pom.xml
+ 
+  echo " * Module poms initialized."
 }
 
 

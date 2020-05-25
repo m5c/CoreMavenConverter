@@ -1,0 +1,13 @@
+classdiagram
+classdiagramedit
+common
+core
+coreedit
+ram
+ramedit
+ramexpressions
+ramexpressionside
+ramexpressionstests
+ramexpressionsui
+restif
+restifedit

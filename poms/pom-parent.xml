@@ -15,10 +15,25 @@
                     <activeByDefault>true</activeByDefault>
                   </activation>
                   <modules>
-                          <module>ca.mcgill.sel.commons</module>
+			<module>ca.mcgill.sel.classdiagram</module>
+			<module>ca.mcgill.sel.classdiagram.edit</module>
+			<module>ca.mcgill.sel.commons</module>
+			<module>ca.mcgill.sel.core</module>
+			<module>ca.mcgill.sel.core.controller</module>
+			<module>ca.mcgill.sel.core.edit</module>
+			<module>ca.mcgill.sel.ram</module>
+			<module>ca.mcgill.sel.ram.controller</module>
+			<module>ca.mcgill.sel.ram.edit</module>
+			<module>ca.mcgill.sel.ram.expressions</module>
+			<module>ca.mcgill.sel.ram.expressions.ide</module>
+			<module>ca.mcgill.sel.ram.expressions.tests</module>
+			<module>ca.mcgill.sel.ram.expressions.ui</module>
+			<module>ca.mcgill.sel.restif</module>
+			<module>ca.mcgill.sel.restif.edit</module>
                   </modules>
         </profile>
         <profile>
+		  <!-- experimental, don't use -->
                   <id>libs</id>
                   <modules>
                           <module>ca.mcgill.sel.commons</module>
