@@ -9,36 +9,27 @@
  <packaging>pom</packaging>
 
 <profiles>
-      	<profile>
-        	 <id>classic</id>
-		  <modules>
-			  <module>core-commons</module>
-			  <module>core-kernel</module>
-			  <module>core-evaluator</module>
-			  <module>core-edit</module>
-			  <module>core-weaver</module>
-		  </modules>
-	</profile>
-      	<profile>
-        	 <id>libs</id>
-		  <modules>
-			  <module>core-commons</module>
-			  <module>core-kernel</module>
-			  <module>core-evaluator</module>
-		  </modules>
-	</profile>
-</profiles>
- 
+        <profile>
+                  <id>desktop</id>
+		  <activation>
+                    <activeByDefault>true</activeByDefault>
+                  </activation>
+                  <modules>
+                          <module>ca.mcgill.sel.commons</module>
+                  </modules>
+        </profile>
+        <profile>
+                  <id>libs</id>
+                  <modules>
+                          <module>ca.mcgill.sel.commons</module>
+                  </modules>
+        </profile>
+</profiles> 
+
 <!-- Eclipse plugin dependencies-->
-<!--This sections declares dependencies, shared by multiple modules-->
-<!-- command to generate the block is:
-cd .m2/repository;
-for i in p2/osgi/bundle/*; do echo "<dependency>"; echo "  <groupId>p2.osgi.bundle</groupId>"; echo "  <artifactId>$(echo $i | cut -f4 -d "/")</artifactId>"; echo "  <version>$(ls $i)</version>"; echo "</dependency>"; echo ""; done > /tmp/eclipse-plugin-dependencies.txt
--->
-  <dependencies>
-
+<!--This auto generated sections declares dependencies, shared by multiple modules, specifically everything EMF related-->
+<dependencies>
 DEPENDENCIES_FLAG
-
-  </dependencies>
+</dependencies>
 
 </project>

@@ -9,6 +9,9 @@
 #
 #! /bin/bash
 #
+## If MAKE_EMF_ARTS is set, this script will also populate the local .m2/repository/p2/osgi/bundle directory with custom EMF artifacts, that are not provided in the official maven repository
+#MAKE_EMF_ARTS=true
+## Variablkes for input locations
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
 RAMSOURCE=~/Code/touchram
@@ -16,7 +19,9 @@ RAMSOURCE=~/Code/touchram
 # Make sure we start with a clean target folder.
 if [ -d $TARGET ]; then
 	rm -rf $TARGET
+	echo " * Target folder not clean, erasing."
 fi
+echo " * Target folder created"
 mkdir $TARGET
 
 # Copy projects from ancient ram/core repositories that remain as they are, fuse all others into a new eclips project.
@@ -50,6 +55,8 @@ for i in ${PreserveRamProjects[@]}; do
   cp -r $RAMSOURCE/$i $TARGET/
 done
 
+echo " * Copied standalone projects"
+
 ## Fuse the sources and tests of the remaining projects
 FuseCoreProjects=(
 "ca.mcgill.sel.core.controller"
@@ -66,32 +73,83 @@ FuseRamProjects=(
 "ca.mcgill.sel.ram.gui"
 "ca.mcgill.sel.ram.validator"
 "ca.mcgill.sel.ram.weaver")
-
-
 }
 
-# Copy the template pom.xml into each of the copied projects. This pom referes to a poarent pom we will later on place on top of all these projects, to ensure they have all their dependencies satisfied. Only update the artifact name in the copied template.
-function populatePoms() {
+echo " * FUSABLE PROJECTS NOT YET FUSED."
 
+# This function iterates over the file "emfdeps" and for each line, outputs a corresponding maven dependency declration. If additionally the variable "MAKE_EMF_ARTS" is set, it will also directly craft a maven-artifact from the specified jar and store it in your local "~/.m2/repository/" folder.
+# NOTE: YOU HAVE TO PROVIDE "emfdeps", before calling this scrip. See README.md
+function mavenizeEmf {
+
+   echo -n " * Creating custom EMF maven references."
+
+   if [ ! -f emfdeps ]; then
+	echo "ERROR: emfdeps not found. The README explains how to create it."
+	exit -1
+   fi
+
+   if [ -f PARENTDEPS.txt ]; then
+	rm PARENTDEPS.txt
+   fi
+
+   ## The lines in "emfdeps" list the EMF jars. The path contains a whitepsace, so we have to set the fiels seperator to "only newlines"
+   IFS=$'\n'       # make newlines the only separator
+
+   ## Now build a dependency block statement for every jar specified in t "emfdeps"
    for i in $(cat emfdeps); do
 	# wrap up the jar as a custom maven artifact
-	echo "<dependency>";
-	echo "  <groupId>p2.osgi.bundle</groupId>";
-	echo -n "  <artifactId>"
+	echo "<dependency>" >> PARENTDEPS.txt
+GROUPID="p2.osgi.bundle"
+	echo "  <groupId>$GROUPID</groupId>" >> PARENTDEPS.txt
+	echo -n "  <artifactId>" >> PARENTDEPS.txt 
 ARTIFACT=$(echo -n "$i" | cut -f7 -d '/' | cut -f1 -d '_')
-	echo -n $ARTIFACT
-	echo "</artifactId>";
-	echo -n "  <version>";
-VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_')
-	echo -n $VERSION;
-	echo "</version>";
-	echo "</dependency>";
-	echo "";
+	echo -n $ARTIFACT >> PARENTDEPS.txt 
+	echo "</artifactId>" >> PARENTDEPS.txt 
+	echo -n "  <version>"  >> PARENTDEPS.txt 
+VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
+	echo -n $VERSION >> PARENTDEPS.txt 
+	echo "</version>" >> PARENTDEPS.txt 
+	echo "</dependency>" >> PARENTDEPS.txt
+	echo "" >> PARENTDEPS.txt
+
+	## Optionally, if MAKE_EMF_ARTS is set, also populate local .m2 driectory.
+	if [ ! -z $MAKE_EMF_ARTS ]; then
+		mvn install:install-file -Dfile=$i -DgroupId=$GROUPID -DartifactId=$ARTIFACT -Dversion=$VERSION -Dpackaging=jar -DcreateChecksum=true &> /dev/null
+		echo -n "."
+	fi
    done
+   echo ""
+   echo " * Created dynamic EMF dependency pom entries: PARENTDEPS.txt"
 }
 
+# merges the generated maven dependency block into the parent pom template
+function createParentPom() {
+	## print template until flag
+	sed '/DEPEN/q' parent-pom.xml | grep -v DEPENDENCIES_FLAG > pom.xml
+	## insert generated dependency block
+	cat PARENTDEPS.txt >> pom.xml
+	## print template after flag
+	sed -n '/DEPEN/,$p' parent-pom.xml | grep -v DEPENDENCIES_FLAG >> pom.xml
+
+	## move the generated pom to the generated repository root.
+	mv pom.xml $TARGET
+
+	echo "Created parent root with full EMF dependency list at $TARGET/pom.xml"
+}
+
+# copies prepared custom poms for the individual projects into the repository, to refer to them as maven modules
+function createModulePoms() {
+	
+  ## currently only commons supported
+  cp pom-commons.xml $TARGET/ca.mcgill.sel.commons/pom.xml
+}
+
+
 ## The actual fusion routine starts here:
-#copyAndMergeSources
-populatePoms > PARENTDEPS.txt
+copyAndMergeSources
+mavenizeEmf
+createParentPom
+createModulePoms
+
 
 

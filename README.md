@@ -25,6 +25,15 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
 ```cat deps | tr ':' '\n' | grep eclipse | grep plugins | sed 's/\ //g' > emfdeps```
  * Make sure emfdeps file is located **right besides this README.md file**.
 
+### Building
+
+ * You can still build everything with eclipse, just like before. Eclipse is not bothered by the presence of some additional maven configuration files.
+ * Additionally you can also use any IDE that supports maven, as long as you do not need Eclipse specific functionality, like metamodel editing or code generation.
+ * This maven command will create a self contained jar: 
+ ```mvn clean package```
+ * Additionally the build process supports profiles. E.g. if you want a version that files up the WebCORE backend, compile it with:  
+```mvn clean package -Pwebcore```
+
 ### Changelog
 
 This is a textual description of the steps performed by the ```convert``` script.
@@ -46,5 +55,15 @@ Using the new repository:
 
 ## Important to know
 
-The maven built hard wires dependencies to specific eclipse plugin versions into the build. Developpers must absolutely use the identical versions on their side. Otherwise commits are very likely rejected by the server.  
-Upgrading to new EMF versions is still possible, but all deverloppers must use the same plugin versions. Ideally all developpers use the auto installer, to ensure a sane setup.
+ * The maven built hard wires dependencies to specific eclipse plugin versions into the build. Developpers must absolutely use the identical versions on their side. Otherwise commits are very likely rejected by the server.  
+ * Upgrading to new EMF versions is still possible, but all deverloppers must use the same plugin versions. Ideally all developpers use the auto installer, to ensure a sane setup.
+ * The structure of the preserved projects slightly deviates from the maven convention. This is mainly to not confuse eclipse, which is to **-bleep-** dumb to just detect a standard maven layout. The sources do not reside in ```src/main/java```, but simply in ```src```. To ensure their inclusion by maven, all preserved projects override the default source location, with a specific entry:  
+
+```xml
+<properties>
+  <src.dir>src</src.dir>
+</properties>
+<build>
+  <sourceDirectory>${src.dir}</sourceDirectory>
+</build>
+```
