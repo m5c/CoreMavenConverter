@@ -8,6 +8,13 @@
  <version>1.0.0-SNAPSHOT</version>
  <packaging>pom</packaging>
 
+<!-- compile with compliance to JDK1.8 -->
+<properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+</properties>
+
 <profiles>
         <profile>
                   <id>desktop</id>
@@ -15,22 +22,24 @@
                     <activeByDefault>true</activeByDefault>
                   </activation>
                   <modules>
+			<module>ca.mcgill.sel.touchcore.view</module>
+			<module>ca.mcgill.sel.touchcore.controller</module>
 			<module>ca.mcgill.sel.classdiagram</module>
 			<module>ca.mcgill.sel.classdiagram.edit</module>
 			<module>ca.mcgill.sel.commons</module>
 			<module>ca.mcgill.sel.core</module>
-			<module>ca.mcgill.sel.core.controller</module>
 			<module>ca.mcgill.sel.core.edit</module>
 			<module>ca.mcgill.sel.ram</module>
-			<module>ca.mcgill.sel.ram.controller</module>
 			<module>ca.mcgill.sel.ram.edit</module>
 			<module>ca.mcgill.sel.ram.expressions</module>
-			<module>ca.mcgill.sel.ram.expressions.ide</module>
-			<module>ca.mcgill.sel.ram.expressions.tests</module>
-			<module>ca.mcgill.sel.ram.expressions.ui</module>
+<!--			<module>ca.mcgill.sel.ram.expressions.ide</module>  -->
+<!--			<module>ca.mcgill.sel.ram.expressions.ui</module>   -->
 			<module>ca.mcgill.sel.restif</module>
 			<module>ca.mcgill.sel.restif.edit</module>
                   </modules>
+
+<!-- https://stackoverflow.com/questions/34188861/maven-multimodule-project-can-i-jar-with-dependencies -->
+
         </profile>
         <profile>
 		  <!-- experimental, don't use -->
@@ -44,7 +53,16 @@
 <!-- Eclipse plugin dependencies-->
 <!--This auto generated sections declares dependencies, shared by multiple modules, specifically everything EMF related-->
 <dependencies>
+
 DEPENDENCIES_FLAG
+
 </dependencies>
 
+    <build>
+	<plugins>
+	    <plugin>
+		<artifactId>maven-assembly-plugin</artifactId>
+	    </plugin>
+	</plugins>
+    </build>
 </project>

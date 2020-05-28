@@ -55,6 +55,7 @@ Using the new repository:
 
 ## Important to know
 
+ * Any **editor** projects and **expressions.ui/ide/test** are irrelevant for the maven build. The stay in the repository but are not invoked during the build process.
  * The maven built hard wires dependencies to specific eclipse plugin versions into the build. Developpers must absolutely use the identical versions on their side. Otherwise commits are very likely rejected by the server.  
  * Upgrading to new EMF versions is still possible, but all deverloppers must use the same plugin versions. Ideally all developpers use the auto installer, to ensure a sane setup.
  * The structure of the preserved projects slightly deviates from the maven convention. This is mainly to not confuse eclipse, which is to **-bleep-** dumb to just detect a standard maven layout. The sources do not reside in ```src/main/java```, but simply in ```src```. To ensure their inclusion by maven, all preserved projects override the default source location, with a specific entry:  
@@ -67,3 +68,9 @@ Using the new repository:
   <sourceDirectory>${src.dir}</sourceDirectory>
 </build>
 ```
+
+ * The build is organized into modules. There are less modules than there were eclips eprojects before. The motivation for modules normaly is the possibility to build custom slimmer build variant by smarter module selections. Hoever the can also be used to maintain "ide projects" within a single repo. This is the case here, for all projects that have to remain standalone eclipse projects.
+   * Controller fuses everything that could be fused, and has no justification to be a standalone project
+   * All EMF projects / corresponding edit projects / xtext generated projects are untouched
+   * The gui module fuses core and ram gui.
+   * Generally speaking: Edits depend on EMF projects / controller. Gui depends on everything.
