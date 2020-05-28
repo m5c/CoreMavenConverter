@@ -214,12 +214,21 @@ function createModulePoms() {
   echo " * Module poms initialized."
 }
 
+# copy the libfolder with os specific opengl drivers into the view project, so maven can place it in the target folder (has to reside right next to the jar-with-dependencies.)
+function copyRuntimeLibs()
+{
+  cp -r lib $TARGET/ca.mcgill.sel.touchcore.view
+}
+
 # Patching navigation par sources, for generic SDK compatibility
 function patchSources() {
   echo " * WARNING: Stub patch applied on NavigationBar.java"
   cp patches/NavigationBar.java $TARGET/ca.mcgill.sel.touchcore.view/src/ca/mcgill/sel/ram/ui/components/navigationbar/
 }
 
+copyHelperScripts() {
+  cp helperscripts/* $TARGET
+}
 
 ## The actual fusion routine starts here:
 copyAndMergeSources
@@ -228,6 +237,8 @@ mavenizeEmf
 wrapCustomNonEmfArtifacts
 createParentPom
 createModulePoms
+copyRuntimeLibs
 patchSources
+copyHelperScripts
 
 

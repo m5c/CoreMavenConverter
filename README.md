@@ -74,3 +74,11 @@ Using the new repository:
    * All EMF projects / corresponding edit projects / xtext generated projects are untouched
    * The gui module fuses core and ram gui.
    * Generally speaking: Edits depend on EMF projects / controller. Gui depends on everything.
+
+## Unresolved
+
+ * NavigationBar.java requires patching for general JDK compliance: Line 1156
+ * *lib* folder must reside next to jar at launch. Currently manually copied by pom-view.xml
+ * Jogl / Gluegen do not fully support maven. Some native libraries have to reside in a lib filder next to the jar, it seems.
+   * https://gist.github.com/tysonmalchow/1624599
+   * https://jogamp.org/wiki/index.php/Maven
