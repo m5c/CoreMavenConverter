@@ -36,6 +36,7 @@
 <!--			<module>ca.mcgill.sel.ram.expressions.ui</module>   -->
 			<module>ca.mcgill.sel.restif</module>
 			<module>ca.mcgill.sel.restif.edit</module>
+			<module>ca.mcgill.sel.restif.controller</module>
                   </modules>
 
 <!-- https://stackoverflow.com/questions/34188861/maven-multimodule-project-can-i-jar-with-dependencies -->

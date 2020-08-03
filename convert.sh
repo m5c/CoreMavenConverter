@@ -42,6 +42,7 @@ function copyAndMergeSources()
 	"ca.mcgill.sel.classdiagram.edit"
 	"ca.mcgill.sel.restif"
 	"ca.mcgill.sel.restif.edit"
+	"ca.mcgill.sel.restif.controller"
 	"ca.mcgill.sel.ram.expressions"
 	"ca.mcgill.sel.ram.expressions.ide"
 	"ca.mcgill.sel.ram.expressions.tests"
@@ -62,7 +63,7 @@ function fuseFusableProjects()
 {
 	## Array of projects to be fused into a single controller project.
 	
-	### everything that becomes the future controller
+	### everything that becomes the future MAIN controller (other langs may provide extra controllers, e.g. the RIF language)
 	## Module dependencies are listed behind.
 	ControllerCoreProjects=(
 	"ca.mcgill.sel.core.controller" 		# => core, commons
@@ -205,6 +206,7 @@ function createModulePoms() {
   cp poms/pom-ramexpressionsui.xml $TARGET/ca.mcgill.sel.ram.expressions.ui/pom.xml
   cp poms/pom-restif.xml $TARGET/ca.mcgill.sel.restif/pom.xml
   cp poms/pom-restifedit.xml $TARGET/ca.mcgill.sel.restif.edit/pom.xml
+  cp poms/pom-restifcontroller.xml $TARGET/ca.mcgill.sel.restif.controller/pom.xml
   cp poms/pom-view.xml $TARGET/ca.mcgill.sel.touchcore.view/pom.xml
  
 
