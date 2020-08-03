@@ -79,6 +79,8 @@ Using the new repository:
 
  * NavigationBar.java requires patching for general JDK compliance: Line 1156
  * *lib* folder must reside next to jar at launch. Currently manually copied by pom-view.xml
- * Jogl / Gluegen do not fully support maven. Some native libraries have to reside in a lib filder next to the jar, it seems.
+ * ~~Jogl / Gluegen do not fully support maven. Some native libraries have to reside in a lib filder next to the jar, it seems.~~ Native libraries correctly invokled once I set jogl and gluegen to version ~~2.2~~ 2.3.  
+Switching to [2.3 causes GL2 errors on code, because signature has changed](https://stackoverflow.com/questions/7210194/where-can-i-find-the-package-javax-media-opengl). Can fix it, but then also have to patch MT4J Jar.
    * https://gist.github.com/tysonmalchow/1624599
    * https://jogamp.org/wiki/index.php/Maven
+   * https://jogamp.org/wiki/index.php?title=JogAmp_JAR_File_Handling#Fat-Jar

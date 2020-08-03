@@ -173,7 +173,7 @@ function wrapCustomNonEmfArtifacts() {
 		echo -n "."
 
 		# mt4j
-		mvn install:install-file -Dfile=staticjars/mt4j.jar -DgroupId=friend.of.mcgillsel -DartifactId=mt4j -Dversion=1.0.0-SNAPSHOT -Dpackaging=jar -DcreateChecksum=true &> /dev/null
+		mvn install:install-file -Dfile=staticjars/mt4j-patched.jar -DgroupId=friend.of.mcgillsel -DartifactId=mt4j -Dversion=1.0.0-SNAPSHOT -Dpackaging=jar -DcreateChecksum=true &> /dev/null
 		echo -n "."
 
 		# antlr
