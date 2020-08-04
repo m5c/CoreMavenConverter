@@ -34,6 +34,12 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Additionally the build process supports profiles. E.g. if you want a version that files up the WebCORE backend, compile it with:  
 ```mvn clean package -Pwebcore```
 
+ * Speeded up building:
+   * Use the ```-T X``` option, to compile on multiple cores parallel
+   * Compile only what you need (e.g.: ```-pl ca.mcgill.sel.core```) and the dependencies (```-am```)  
+  => 0.8 secs insteal of 14 secs for ```core```  
+  => 6.9 secs instead of 14 secs for ```touchcore```
+
 ### Changelog
 
 This is a textual description of the steps performed by the ```convert``` script.
