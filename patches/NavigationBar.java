@@ -36,7 +36,6 @@ import ca.mcgill.sel.core.COREModelComposition;
 import ca.mcgill.sel.core.COREModelReuse;
 import ca.mcgill.sel.core.COREPerspective;
 import ca.mcgill.sel.core.COREReuse;
-import ca.mcgill.sel.core.COREScene;
 import ca.mcgill.sel.core.CorePackage;
 import ca.mcgill.sel.core.impl.COREConcernImpl;
 import ca.mcgill.sel.core.impl.COREFeatureImpl;
@@ -83,7 +82,7 @@ import ca.mcgill.sel.ram.ui.scenes.DisplayConcernSelectScene;
 import ca.mcgill.sel.ram.ui.scenes.DisplayImpactModelEditScene;
 import ca.mcgill.sel.ram.ui.scenes.DisplayImpactModelSelectScene;
 import ca.mcgill.sel.ram.ui.scenes.RamAbstractScene;
-import ca.mcgill.sel.ram.ui.scenes.SelectAspectScene;
+import ca.mcgill.sel.ram.ui.scenes.TouchCOREStartupScene;
 import ca.mcgill.sel.ram.ui.scenes.handler.impl.ConcernEditSceneHandler;
 import ca.mcgill.sel.ram.ui.scenes.handler.impl.ConcernSelectSceneHandler;
 import ca.mcgill.sel.ram.ui.scenes.handler.impl.DisplayAspectSceneHandler;
@@ -99,6 +98,7 @@ import ca.mcgill.sel.ram.ui.views.structural.CompositionSplitEditingView;
 import ca.mcgill.sel.ram.ui.views.structural.StructuralDiagramView;
 import ca.mcgill.sel.ram.util.Constants;
 import ca.mcgill.sel.ram.util.MessageViewUtil;
+import ca.mcgill.sel.restif.ui.scenes.DisplayRestTreeScene;
 import processing.core.PImage;
 
 /**
@@ -127,7 +127,7 @@ public final class NavigationBar extends RamRectangleComponent {
         @Override
         public boolean processTapAndHoldEvent(TapAndHoldEvent tapAndHoldEvent) {
             if (tapAndHoldEvent.isHoldComplete()) {
-                if (!(RamApp.getApplication().getCurrentScene() instanceof SelectAspectScene)) {
+                if (!(RamApp.getApplication().getCurrentScene() instanceof TouchCOREStartupScene)) {
                     if (!historyOpen) {
                         if (!histories.isEmpty()) {
                             NavigationBarMenu menu = new NavigationBarMenu();
@@ -190,7 +190,12 @@ public final class NavigationBar extends RamRectangleComponent {
                             popSection();
                             scene.getHandler().switchToConcern(scene);
                             return true;
+                        } else if (RamApp.getActiveScene() instanceof DisplayRestTreeScene) {
+                            DisplayRestTreeScene scene = (DisplayRestTreeScene) RamApp.getActiveScene();
                             
+                            popSection();
+                            scene.getHandler().switchToConcern(scene);
+                            return true;
                         } else if (RamApp.getActiveScene() instanceof DisplayAspectScene) {
                             selected = null;
                              
@@ -262,7 +267,7 @@ public final class NavigationBar extends RamRectangleComponent {
                             }
                         } else if (RamApp.getActiveScene() instanceof DisplayImpactModelEditScene) {
                             if (RamApp.getActiveScene().getPreviousScene() instanceof DisplayConcernEditScene
-                                    || RamApp.getActiveScene().getPreviousScene() instanceof SelectAspectScene
+                                    || RamApp.getActiveScene().getPreviousScene() instanceof TouchCOREStartupScene
                                     || RamApp.getActiveScene()
                                             .getPreviousScene() instanceof DisplayImpactModelEditScene) {
                                 AbstractImpactScene aI = (AbstractImpactScene) RamApp.getActiveScene();
@@ -1153,9 +1158,10 @@ public final class NavigationBar extends RamRectangleComponent {
                 }
                 @SuppressWarnings("unchecked")
                 LinkedList<Aspect> aspectsL = new LinkedList<Aspect>();
-//                        (Collection<? extends Aspect>) EMFModelUtil.collectElementsOfType(element,
-//                                CorePackage.Literals.CORE_CONCERN__ARTEFACTS, RamPackage.eINSTANCE.getAspect()));
-
+                /*LinkedList<Aspect> aspectsL = new LinkedList<Aspect>(
+                        (Collection<? extends Aspect>) EMFModelUtil.collectElementsOfType(element,
+                                CorePackage.Literals.CORE_CONCERN__ARTEFACTS, RamPackage.eINSTANCE.getAspect()));
+*/
                 createDesignModels(menu, aspectsL);
             }
 
@@ -1235,6 +1241,8 @@ public final class NavigationBar extends RamRectangleComponent {
                 ((DisplayAspectScene) scene).repushSections();
             } else if (scene instanceof DisplayClassDiagramScene) {
                 ((DisplayClassDiagramScene) scene).repushSections();
+            } else if (scene instanceof DisplayRestTreeScene) {
+                ((DisplayRestTreeScene) scene).repushSections();
             }
             RamApp.getApplication().getExistingOrCreateModelScene(element)
                     .getCanvas().addChild(nav);
@@ -1319,6 +1327,8 @@ public final class NavigationBar extends RamRectangleComponent {
                                     ((DisplayAspectScene) scene).repushSections();
                                 } else if (scene instanceof DisplayClassDiagramScene) {
                                     ((DisplayClassDiagramScene) scene).repushSections();
+                                } else if (scene instanceof DisplayRestTreeScene) {
+                                    ((DisplayRestTreeScene) scene).repushSections();
                                 }
                                 RamApp.getApplication().getExistingOrCreateModelScene(element)
                                         .getCanvas().addChild(nav);
@@ -1346,7 +1356,7 @@ public final class NavigationBar extends RamRectangleComponent {
 
     /**
      * Finds all the Realization Models present in the feature.
-     * Differently from createDesignModels(NavigationBarMenu, List<Aspect>) this method
+     * Differently from createDesignModels(NavigationBarMenu, List{Aspect}) this method
      * handles subdivision through different features, thus not creating "Design Models" shortcuts
      * 
      * @param menu menu to add models found.
@@ -1414,6 +1424,8 @@ public final class NavigationBar extends RamRectangleComponent {
                             ((DisplayAspectScene) scene).repushSections();
                         } else if (scene instanceof DisplayClassDiagramScene) {
                             ((DisplayClassDiagramScene) scene).repushSections();
+                        } else if (scene instanceof DisplayRestTreeScene) {
+                            ((DisplayRestTreeScene) scene).repushSections();
                         }
                         RamApp.getApplication().getExistingOrCreateModelScene(element)
                                 .getCanvas().addChild(nav);
@@ -1630,8 +1642,8 @@ public final class NavigationBar extends RamRectangleComponent {
                     }, null);
         }
         
-        if (artefact.getScene().getRealizes().size() > 0) {
-            //TODO: we need to figure out how we want to display conflict resolution realization models 
+//        if (artefact.getScene().getRealizes().size() > 0) {
+//            //TODO: we need to figure out how we want to display conflict resolution realization models 
 //            menu.addMenuElement(Strings.LABEL_MODELS_CONFLICT, artefact.getScene(),
 //                    CorePackage.Literals.CORE_SCENE__ARTEFACTS,
 //                    RamPackage.Literals.ASPECT, new AbstractDefaultListListener<COREArtefact>() {
@@ -1647,7 +1659,7 @@ public final class NavigationBar extends RamRectangleComponent {
 //                            return artefact.getScene().getRealizes().size() > 1;
 //                        }
 //                    });
-        }
+//        }
     }
 
     /**
@@ -1678,10 +1690,13 @@ public final class NavigationBar extends RamRectangleComponent {
                                 ((DisplayAspectScene) scene).repushSections();
                             } else if (scene instanceof DisplayClassDiagramScene) {
                                 ((DisplayClassDiagramScene) scene).repushSections();
+                            } else if (scene instanceof DisplayRestTreeScene) {
+                                ((DisplayRestTreeScene) scene).repushSections();
                             }
                             RamApp.getApplication().getExistingOrCreateModelScene(element).getCanvas().addChild(nav);
                         } else {
-                            currentAspect.setTransition(new SlideUpDownTransition(RamApp.getApplication(), 500, false));       
+                            currentAspect.setTransition(new SlideUpDownTransition(RamApp.getApplication(),
+                                    500, false));       
                             RamApp.getApplication().loadScene(
                                     COREArtefactUtil.getReferencingExternalArtefact(element), element);
                         }
