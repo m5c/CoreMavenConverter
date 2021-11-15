@@ -10,7 +10,7 @@
 #! /bin/bash
 #
 ## If MAKE_EMF_ARTS is set, this script will also populate the local .m2/repository/p2/osgi/bundle directory with custom EMF artifacts, that are not provided in the official maven repository
-#MAKE_EMF_ARTS=true
+MAKE_EMF_ARTS=true
 ## Variablkes for input locations
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
@@ -161,7 +161,7 @@ function createParentPom() {
 
 function wrapCustomNonEmfArtifacts() {
    
-	## If MAKE_EMF_ARTS is set, populate local .m2 directory with custom jars form friendly academic institutions
+	## If MAKE_EMF_ARTS is set, populate local .m2 directory with custom jars from friendly academic institutions
 	if [ ! -z $MAKE_EMF_ARTS ]; then
 	echo -n " * Creating custom non-EMF maven references."
 		
