@@ -39,16 +39,16 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Speeded up building:
    * Use the ```-T X``` option, to compile on multiple cores parallel
    * Compile only what you need (e.g.: ```-pl ca.mcgill.sel.core```) and the dependencies (```-am```)  
-  => 0.8 secs insteal of 14 secs for ```core```  
+  => 0.8 secs instead of 14 secs for ```core```  
   => 6.9 secs instead of 14 secs for ```touchcore```
 
 ### Changelog
 
 This is a textual description of the steps performed by the ```convert``` script.
 
- * [Source relocation]()
- * [Maven ```pom``` file generation and placement]()
- * [Generation of custom maven artifacts]()
+ * [~~Source relocation~~]()
+ * [~~Maven ```pom``` file generation and placement~~]()
+ * [~~Generation of custom maven artifacts~~]()
 
 *Note: Co developpers still have to unzip the generated ```m2.zip``` in their homedirectories, to build with maven*
 
