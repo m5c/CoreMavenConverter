@@ -8,6 +8,8 @@ This repository hosts a script for a (mostly) automated conversion of the core /
 
 If the preliminaries are covered, running the ```convert``` script crafts a new maven organized repository template out of the legacy TouchCORE repos.
 
+ > Note: Your original sources are not modified. All output is placed in ```~/Desktop/touchcore```
+
 ### Preliminaries
 
 To use this script, you need a system that:
