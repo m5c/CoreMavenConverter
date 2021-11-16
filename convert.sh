@@ -10,7 +10,7 @@
 #! /bin/bash
 #
 ## If MAKE_EMF_ARTS is set, this script will also populate the local .m2/repository/p2/osgi/bundle directory with custom EMF artifacts, that are not provided in the official maven repository
-MAKE_EMF_ARTS=true
+# MAKE_EMF_ARTS=true
 ## Variablkes for input locations
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
@@ -32,6 +32,7 @@ function copyAndMergeSources()
 	PreserveCoreProjects=(
 	"ca.mcgill.sel.core"
 	"ca.mcgill.sel.core.edit"
+	"ca.mcgill.sel.core.controller"
 	"ca.mcgill.sel.commons")
 
 	## Declare array with RAM projects names of things we want to preserve:
@@ -66,7 +67,7 @@ function fuseFusableProjects()
 	### everything that becomes the future MAIN controller (other langs may provide extra controllers, e.g. the RIF language)
 	## Module dependencies are listed behind.
 	ControllerCoreProjects=(
-	"ca.mcgill.sel.core.controller" 		# => core, commons
+#	"ca.mcgill.sel.core.controller" 		# => core, commons
 	"ca.mcgill.sel.core.evaluator" 			# => core, commons, familiar bridge (JAR)
 	"ca.mcgill.sel.core.language"   		# => commons, [weaver]
 	"ca.mcgill.sel.core.weaver"			# => commons, core(util)
@@ -199,6 +200,7 @@ function createModulePoms() {
   cp poms/pom-commons.xml $TARGET/ca.mcgill.sel.commons/pom.xml
   cp poms/pom-core.xml $TARGET/ca.mcgill.sel.core/pom.xml
   cp poms/pom-coreedit.xml $TARGET/ca.mcgill.sel.core.edit/pom.xml
+  cp poms/pom-corecontroller.xml $TARGET/ca.mcgill.sel.core.controller/pom.xml
   cp poms/pom-ram.xml $TARGET/ca.mcgill.sel.ram/pom.xml
   cp poms/pom-ramedit.xml $TARGET/ca.mcgill.sel.ram.edit/pom.xml
   cp poms/pom-ramexpressions.xml $TARGET/ca.mcgill.sel.ram.expressions/pom.xml

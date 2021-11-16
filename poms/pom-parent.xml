@@ -29,6 +29,7 @@
 			<module>ca.mcgill.sel.commons</module>
 			<module>ca.mcgill.sel.core</module>
 			<module>ca.mcgill.sel.core.edit</module>
+			<module>ca.mcgill.sel.core.controller</module>
 			<module>ca.mcgill.sel.ram</module>
 			<module>ca.mcgill.sel.ram.edit</module>
 			<module>ca.mcgill.sel.ram.expressions</module>

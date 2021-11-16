@@ -33,8 +33,8 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * You can still build everything with eclipse, just like before. Eclipse is not bothered by the presence of some additional maven configuration files.
  * Additionally you can also use any IDE that supports maven, as long as you do not need Eclipse specific functionality, like metamodel editing or code generation.
  * This maven command will create a self contained jar: 
- ```mvn clean package```
- * Additionally the build process supports profiles. E.g. if you want a version that files up the WebCORE backend, compile it with:  
+ ```mvn clean package``` (or for convenience, use the ```./make``` command)
+ * Additionally the build process supports profiles. E.g. if you want a version that powers up the WebCORE backend, compile it with:  
 ```mvn clean package -Pwebcore```
 
  * Speeded up building:
@@ -45,13 +45,11 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
 
 ### Changelog
 
-This is a textual description of the steps performed by the ```convert``` script.
-
- * [~~Source relocation~~]()
- * [~~Maven ```pom``` file generation and placement~~]()
- * [~~Generation of custom maven artifacts~~]()
-
-*Note: Co developpers still have to unzip the generated ```m2.zip``` in their homedirectories, to build with maven*
+ * Where did my language controllers go?  
+The converter fuses some packages, to reduce complexity and provide a single point of antry as controller module (useful e.g. for REST-API project). Namely this affects all language controllers. They are all placed in a new project module: ```ca.mcgill.sel.touchcore.controller```
+ * Why is the view not working?  
+tl;dr: MT4J is dprecated and no longer supported.  
+[Long answer here.](#unresolved)
 
 ## Upshots
 
