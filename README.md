@@ -24,7 +24,8 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Rightclick on ```gui``` project  
  => Properties  => Run / Debug  => TouchCORE  => Edit  => JRE => Show command line
  * Copy the list into a file ```deps```, then run:  
-```cat deps | tr ':' '\n' | grep eclipse | grep plugins | sed 's/\ //g' > emfdeps```
+```cat deps | tr ':' '\n' | grep eclipse | grep plugins > emfdeps```  
+(note, emfdeps with contain a space character in every path but that is ok. The script knows how to handle that when iterating over the entries.)
  * Make sure emfdeps file is located **right besides this README.md file**.
 
 ### Building
