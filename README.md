@@ -26,7 +26,7 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Copy the list into a file ```deps```, then run:  
 ```cat deps | tr ':' '\n' | grep eclipse | grep plugins > emfdeps```  
 (note, emfdeps will contain a space character in every path but that is ok. The script knows how to handle that when iterating over the entries.)
- * Make sure emfdeps file is located **right besides this README.md file**.
+ * Make sure emfdeps file is located **right beside this README.md file**.
 
 ### Building
 
