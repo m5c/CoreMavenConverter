@@ -16,7 +16,7 @@
 	<!-- rif langage depends on some classes originally defined in core langauge -->
 	<dependency>
 		<groupId>ca.mcgill.sel</groupId>
-                <artifactId>core</artifactId>
+                <artifactId>corecontroller</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
 	</dependency>
 </dependencies>

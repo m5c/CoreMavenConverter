@@ -53,7 +53,7 @@
 </profiles> 
 
 <!-- Eclipse plugin dependencies-->
-<!--This auto generated sections declares dependencies, shared by multiple modules, specifically everything EMF related-->
+<!--This auto generated section declares dependencies, shared by multiple modules, specifically everything EMF related-->
 <dependencies>
 
 DEPENDENCIES_FLAG

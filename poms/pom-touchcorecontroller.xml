@@ -43,11 +43,13 @@
 		<artifactId>asm</artifactId>
 		<version>5.0.3-SNAPSHOT</version>
         </dependency>
-        <dependency>
-                <groupId>friend.of.mcgillsel</groupId>
-                <artifactId>mt4j</artifactId>
-                <version>mspatch-1.0</version>
-        </dependency>
+
+<!-- BOERK, so happy we got rid of this one!!! -->
+<!--        <dependency> -->
+<!--                <groupId>friend.of.mcgillsel</groupId> -->
+<!--                <artifactId>mt4j</artifactId> -->
+<!--                <version>mspatch-1.0</version> -->
+<!--        </dependency> -->
 </dependencies>
 
 <properties>
