@@ -10,7 +10,7 @@
 #! /bin/bash
 #
 ## If MAKE_EMF_ARTS is set, this script will also populate the local .m2/repository/p2/osgi/bundle directory with custom EMF artifacts, that are not provided in the official maven repository
-# MAKE_EMF_ARTS=true
+MAKE_EMF_ARTS=true
 ## Variablkes for input locations
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
@@ -176,7 +176,7 @@ function wrapCustomNonEmfArtifacts() {
 		echo -n "."
 
 		# mt4j
-		mvn install:install-file -Dfile=staticjars/mt4j-patched.jar -DgroupId=friend.of.mcgillsel -DartifactId=mt4j -Dversion=1.0.0-SNAPSHOT -Dpackaging=jar -DcreateChecksum=true &> /dev/null
+		mvn install:install-file -Dfile=staticjars/mt4j.jar -DgroupId=friend.of.mcgillsel -DartifactId=mt4j -Dversion=mspatch-1.0 -Dpackaging=jar -DcreateChecksum=true &> /dev/null
 		echo -n "."
 
 		# antlr

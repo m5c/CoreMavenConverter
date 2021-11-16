@@ -45,6 +45,7 @@
         </dependency>
 
 <!-- BOERK, so happy we got rid of this one!!! -->
+<!-- TODO: Strip UI sources from all MT4J dependencies / break up UI into actual UI / actual controller. -->
 <!--        <dependency> -->
 <!--                <groupId>friend.of.mcgillsel</groupId> -->
 <!--                <artifactId>mt4j</artifactId> -->

@@ -13,6 +13,14 @@
 </parent>
 
 <dependencies>
+
+<!-- TODO: Make sure UI is actually split into MT4J-dependent trash and proper controller classes (e.g. relevant for backend build) -->
+        <dependency>
+                <groupId>friend.of.mcgillsel</groupId>
+                <artifactId>mt4j</artifactId>
+                <version>mspatch-1.0</version>
+        </dependency>
+
         <dependency>
                 <groupId>ca.mcgill.sel</groupId>
                 <artifactId>touchcorecontroller</artifactId>
