@@ -114,7 +114,7 @@ function mavenizeEmf {
 	rm PARENTDEPS.txt
    fi
 
-   ## The lines in "emfdeps" list the EMF jars. The path contains a whitepsace, so we have to set the fiels seperator to "only newlines"
+   ## The lines in "emfdeps" list the EMF jars. The path contains a whitepsace, so we have to set the field seperator to "only newlines"
    IFS=$'\n'       # make newlines the only separator
 
    ## Now build a dependency block statement for every jar specified in t "emfdeps"
@@ -136,7 +136,8 @@ VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
 
 	## Optionally, if MAKE_EMF_ARTS is set, also populate local .m2 driectory.
 	if [ ! -z $MAKE_EMF_ARTS ]; then
-		mvn install:install-file -Dfile=$i -DgroupId=$GROUPID -DartifactId=$ARTIFACT -Dversion=$VERSION -Dpackaging=jar -DcreateChecksum=true &> /dev/null
+		mvn install:install-file -Dfile=$i -DgroupId=$GROUPID -DartifactId=$ARTIFACT -Dversion=$VERSION -Dpackaging=jar -DcreateChecksum=true >> $TARGET/conversion-log.txt
+		echo "------------------------" >> $TARGET/conversion-log.txt
 		echo -n "."
 	fi
    done
