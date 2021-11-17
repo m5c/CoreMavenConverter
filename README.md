@@ -6,7 +6,7 @@ This repository hosts a script for a (mostly) automated conversion of the core /
 
 ## Philosophy
 
-If the preliminaries are covered, running the ```convert``` script crafts a new maven organized repository template out of the legacy TouchCORE repos.
+If the preliminaries are covered, running the ```convert``` script crafts a new maven organized repository template out of the legacy TouchCORE repos. If the ```-a``` switch is provided, the script will use the [```emfdeps```](emfdeps) file to also convert eclipse plugins to local maven artifacts and create [maven artifacts of external jars](staticjars).
 
  > Note: Your original sources are not modified. All output is placed in ```~/Desktop/touchcore```
 

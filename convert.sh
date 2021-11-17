@@ -10,11 +10,18 @@
 #! /bin/bash
 #
 ## If MAKE_EMF_ARTS is set, this script will also populate the local .m2/repository/p2/osgi/bundle directory with custom EMF artifacts, that are not provided in the official maven repository
-MAKE_EMF_ARTS=true
+#MAKE_EMF_ARTS=false
 ## Variablkes for input locations
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
 RAMSOURCE=~/Code/touchram
+
+## parse options, see: https://unix.stackexchange.com/a/20977
+while getopts "ab:" opt; do
+    case $opt in
+    a) aflag=true ; MAKE_EMF_ARTS=true;
+    esac
+done
 
 # Make sure we start with a clean target folder.
 if [ -d $TARGET ]; then
