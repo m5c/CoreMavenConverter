@@ -82,6 +82,13 @@ Using the new repository:
    * The gui module fuses core and ram gui.
    * Generally speaking: Edits depend on EMF projects / controller. Gui depends on everything.
 
+## Possibly easier
+
+Some EClipse plug-ins seem to be available on official repos now:
+
+ * [Xtext](https://mvnrepository.com/artifact/org.eclipse.xtext/org.eclipse.xtext)
+ * [EMF](https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.ecore)
+
 ## Unresolved
 
  * NavigationBar.java requires patching for general JDK compliance: Line 1156

@@ -23,6 +23,11 @@
                 <artifactId>core</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+                <groupId>ca.mcgill.sel</groupId>
+                <artifactId>coreedit</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 </dependencies>
 
 <properties>
