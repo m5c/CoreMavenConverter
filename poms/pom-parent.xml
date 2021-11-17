@@ -38,6 +38,16 @@
 			<module>ca.mcgill.sel.restif</module>
 			<module>ca.mcgill.sel.restif.edit</module>
 			<module>ca.mcgill.sel.restif.controller</module>
+			<module>ca.mcgill.sel.operationmodel</module>
+			<module>ca.mcgill.sel.operationmodel.edit</module>
+			<module>ca.mcgill.sel.operationmodel.language</module>
+			<module>ca.mcgill.sel.environmentmodel</module>
+			<module>ca.mcgill.sel.environmentmodel.edit</module>
+			<module>ca.mcgill.sel.environmentmodel.language</module>
+			<module>ca.mcgill.sel.usecases</module>
+			<module>ca.mcgill.sel.usecases.edit</module>
+			<module>ca.mcgill.sel.usecases.language</module>
+
                   </modules>
 
 <!-- https://stackoverflow.com/questions/34188861/maven-multimodule-project-can-i-jar-with-dependencies -->

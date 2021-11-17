@@ -39,7 +39,7 @@ function copyAndMergeSources()
 	PreserveCoreProjects=(
 	"ca.mcgill.sel.core"
 	"ca.mcgill.sel.core.edit"
-	"ca.mcgill.sel.core.controller"
+	"ca.mcgill.sel.core.controller" # required here, provides interfaces for other languages.
 	"ca.mcgill.sel.commons")
 
 	## Declare array with RAM projects names of things we want to preserve:
@@ -48,13 +48,23 @@ function copyAndMergeSources()
 	"ca.mcgill.sel.ram.edit"
 	"ca.mcgill.sel.classdiagram"
 	"ca.mcgill.sel.classdiagram.edit"
+	"ca.mcgill.sel.classdiagram.controller"
 	"ca.mcgill.sel.restif"
 	"ca.mcgill.sel.restif.edit"
 	"ca.mcgill.sel.restif.controller"
 	"ca.mcgill.sel.ram.expressions"
 	"ca.mcgill.sel.ram.expressions.ide"
 	"ca.mcgill.sel.ram.expressions.tests"
-	"ca.mcgill.sel.ram.expressions.ui")
+	"ca.mcgill.sel.ram.expressions.ui"
+        "ca.mcgill.sel.usecases"
+        "ca.mcgill.sel.usecases.edit"
+        "ca.mcgill.sel.usecases.language"
+        "ca.mcgill.sel.environmentmodel"
+        "ca.mcgill.sel.environmentmodel.edit"
+        "ca.mcgill.sel.environmentmodel.language"
+        "ca.mcgill.sel.operationmodel"
+        "ca.mcgill.sel.operationmodel.edit"
+        "ca.mcgill.sel.operationmodel.language")
 
 	## Actually copy those projects
 	for i in ${PreserveCoreProjects[@]}; do
@@ -74,7 +84,6 @@ function fuseFusableProjects()
 	### everything that becomes the future MAIN controller (other langs may provide extra controllers, e.g. the RIF language)
 	## Module dependencies are listed behind.
 	ControllerCoreProjects=(
-#	"ca.mcgill.sel.core.controller" 		# => core, commons
 	"ca.mcgill.sel.core.evaluator" 			# => core, commons, familiar bridge (JAR)
 	"ca.mcgill.sel.core.language"   		# => commons, [weaver]
 	"ca.mcgill.sel.core.weaver"			# => commons, core(util)
@@ -217,6 +226,15 @@ function createModulePoms() {
   cp poms/pom-restif.xml $TARGET/ca.mcgill.sel.restif/pom.xml
   cp poms/pom-restifedit.xml $TARGET/ca.mcgill.sel.restif.edit/pom.xml
   cp poms/pom-restifcontroller.xml $TARGET/ca.mcgill.sel.restif.controller/pom.xml
+  cp poms/pom-operationmodel.xml $TARGET/ca.mcgill.sel.operationmodel/pom.xml
+  cp poms/pom-operationmodeledit.xml $TARGET/ca.mcgill.sel.operationmodel.edit/pom.xml
+  cp poms/pom-operationmodellanguage.xml $TARGET/ca.mcgill.sel.operationmodel.language/pom.xml
+  cp poms/pom-environmentmodel.xml $TARGET/ca.mcgill.sel.environmentmodel/pom.xml
+  cp poms/pom-environmentmodeledit.xml $TARGET/ca.mcgill.sel.environmentmodel.edit/pom.xml
+  cp poms/pom-environmentmodellanguage.xml $TARGET/ca.mcgill.sel.environmentmodel.language/pom.xml
+  cp poms/pom-usecases.xml $TARGET/ca.mcgill.sel.usecases/pom.xml
+  cp poms/pom-usecasesedit.xml $TARGET/ca.mcgill.sel.usecases.edit/pom.xml
+  cp poms/pom-usecaseslanguage.xml $TARGET/ca.mcgill.sel.usecases.language/pom.xml
   cp poms/pom-view.xml $TARGET/ca.mcgill.sel.touchcore.view/pom.xml
  
 
