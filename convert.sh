@@ -15,6 +15,7 @@
 TARGET=~/Desktop/touchcore
 CORESOURCE=~/Code/core
 RAMSOURCE=~/Code/touchram
+RESTSOURCES=~/Code/touchcore-web/webcore-server
 
 ## parse options, see: https://unix.stackexchange.com/a/20977
 while getopts "ab:" opt; do
@@ -116,6 +117,13 @@ function fuseFusableProjects()
 	cp -npr $RAMSOURCE/ca.mcgill.sel.ram.gui/src $TARGET/ca.mcgill.sel.touchcore.view/
 }
 
+function prepareRestBackendModule
+{
+	mkdir -p $TARGET/ca.mcgill.sel.restbackend
+	cp -r $RESTSOURCES/src $TARGET/ca.mcgill.sel.restbackend/
+	cp $RESTSOURCES/cors.xml $TARGET/ca.mcgill.sel.restbackend/
+}
+
 # This function iterates over the file "emfdeps" and for each line, outputs a corresponding maven dependency declration. If additionally the variable "MAKE_EMF_ARTS" is set, it will also directly craft a maven-artifact from the specified jar and store it in your local "~/.m2/repository/" folder.
 # NOTE: YOU HAVE TO PROVIDE "emfdeps", before calling this scrip. See README.md
 function mavenizeEmf {
@@ -134,7 +142,7 @@ function mavenizeEmf {
    ## The lines in "emfdeps" list the EMF jars. The path contains a whitepsace, so we have to set the field seperator to "only newlines"
    IFS=$'\n'       # make newlines the only separator
 
-   ## Now build a dependency block statement for every jar specified in t "emfdeps"
+   ## Now build a dependency block statement for every jar specified in "emfdeps"
    for i in $(cat emfdeps); do
 	# wrap up the jar as a custom maven artifact
 	echo "<dependency>" >> PARENTDEPS.txt
@@ -162,17 +170,22 @@ VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
    echo " * Created dynamic EMF dependency pom entries: PARENTDEPS.txt"
 }
 
-# merges the generated maven dependency block into the parent pom template
+# merges the generated maven dependency block into the parent pom template AND the rest backend pom template
 function createParentPom() {
 	## print template until flag
-	sed '/DEPEN/q' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG > pom.xml
+	sed '/DEPEN/q' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG > $TARGET/pom.xml
+	sed '/DEPEN/q' poms/pom-restbackend.xml | grep -v DEPENDENCIES_FLAG > $TARGET/ca.mcgill.sel.restbackend/pom.xml
+
 	## insert generated dependency block
-	cat PARENTDEPS.txt >> pom.xml
+	cat PARENTDEPS.txt >> $TARGET/pom.xml
+	cat PARENTDEPS.txt >> $TARGET/ca.mcgill.sel.restbackend/pom.xml
+
 	## print template after flag
-	sed -n '/DEPEN/,$p' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG >> pom.xml
+	sed -n '/DEPEN/,$p' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/pom.xml
+	sed -n '/DEPEN/,$p' poms/pom-restbackend.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/ca.mcgill.sel.restbackend/pom.xml
 
 	## move the generated pom to the generated repository root.
-	mv pom.xml $TARGET
+#	mv pom.xml $TARGET
 
 	echo " * Full EMF dependency list fused into parent template, stored at $TARGET/pom.xml"
 }
@@ -263,6 +276,7 @@ copyHelperScripts() {
 ## The actual fusion routine starts here:
 copyAndMergeSources
 fuseFusableProjects
+prepareRestBackendModule
 mavenizeEmf
 wrapCustomNonEmfArtifacts
 createParentPom
