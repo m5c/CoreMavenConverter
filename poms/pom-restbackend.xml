@@ -19,6 +19,13 @@
 
         <dependency>
             <groupId>ca.mcgill.sel</groupId>
+            <artifactId>ramedit</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ca.mcgill.sel</groupId>
             <artifactId>classdiagramcontroller</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>

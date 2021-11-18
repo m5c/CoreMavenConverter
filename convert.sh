@@ -90,7 +90,6 @@ function fuseFusableProjects()
 	"ca.mcgill.sel.core.weaver"			# => commons, core(util)
 	"ca.mcgill.sel.perspective")			# => core, [corelangauge], cdm, [cdm-controller] 
 	ControllerRamProjects=(
-	"ca.mcgill.sel.classdiagram.controller"		# => classdiagram(impl) / (util), [corecontroller], commons, corectl/util
 	"ca.mcgill.sel.ram.classloader"			# => asm (JAR)
 	"ca.mcgill.sel.ram.controller"			# => commons, [corectl], core(util), [coreweaver], ram(impl), ram(util)
 	"ca.mcgill.sel.ram.generator"			# => [corelang], core(util), ram(util)
