@@ -262,12 +262,6 @@ function copyRuntimeLibs()
   cp -r lib $TARGET/ca.mcgill.sel.touchcore.view
 }
 
-# Patching navigation par sources, for generic SDK compatibility
-function patchSources() {
-  echo " * WARNING: Stub patch applied on NavigationBar.java"
-  cp patches/NavigationBar.java $TARGET/ca.mcgill.sel.touchcore.view/src/ca/mcgill/sel/ram/ui/components/navigationbar/
-}
-
 copyHelperScripts() {
   cp helperscripts/* $TARGET
 }
@@ -281,7 +275,6 @@ wrapCustomNonEmfArtifacts
 createParentPom
 createModulePoms
 copyRuntimeLibs
-#patchSources
 copyHelperScripts
 
 
