@@ -16,7 +16,10 @@ To use this script, you need a system that:
 
  * Has the core sources in ```~/Code/core```
  * Has the touchram sources in ```~/Code/touchram```
+ * Has the webcore sources in ```~/Code/touchcore-web/webcore-server```
  * Has the dynamic EMF dependencies present in ```/Applications/Eclipse Modeling.app/Contents/Eclipse/plugins/```
+
+ > Note: If your touchcore installation uses different pathes, you can modify the default locations (Search for ```*SOURCE``` variables in ```convert.sh```)
 
 Additionally, it is strongly recommended, to **once** update the transitive EMF dependency list of TouchCORE:
 
@@ -24,9 +27,11 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Rightclick on ```gui``` project  
  => Properties  => Run / Debug  => TouchCORE  => Edit  => JRE => Show command line
  * Copy the list into a file ```deps```, then run:  
-```cat deps | tr ':' '\n' | grep eclipse | grep plugins > emfdeps```  
-(note, emfdeps will contain a space character in every path but that is ok. The script knows how to handle that when iterating over the entries.)
+```cat deps | tr ':' '\n' | grep eclipse | grep plugins > emfdeps```
  * Make sure emfdeps file is located **right beside this README.md file**.
+
+ > Note: emfdeps will contain a space character in every path but that is ok. The script knows how to handle that when iterating over the entries.
+
 
 ### Building
 
