@@ -42,6 +42,7 @@
                 <module>ca.mcgill.sel.touchcore.controller</module>
                 <module>ca.mcgill.sel.classdiagram</module>
                 <module>ca.mcgill.sel.classdiagram.edit</module>
+                <module>ca.mcgill.sel.classdiagram.controller</module>
                 <module>ca.mcgill.sel.commons</module>
                 <module>ca.mcgill.sel.core</module>
                 <module>ca.mcgill.sel.core.edit</module>
@@ -71,6 +72,7 @@
                 <module>ca.mcgill.sel.touchcore.controller</module>
                 <module>ca.mcgill.sel.classdiagram</module>
                 <module>ca.mcgill.sel.classdiagram.edit</module>
+                <module>ca.mcgill.sel.classdiagram.controller</module>
                 <module>ca.mcgill.sel.commons</module>
                 <module>ca.mcgill.sel.core</module>
                 <module>ca.mcgill.sel.core.edit</module>

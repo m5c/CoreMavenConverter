@@ -223,6 +223,7 @@ function createModulePoms() {
   # Inject poms for all copied projects	
   cp poms/pom-classdiagram.xml $TARGET/ca.mcgill.sel.classdiagram/pom.xml
   cp poms/pom-classdiagramedit.xml $TARGET/ca.mcgill.sel.classdiagram.edit/pom.xml
+  cp poms/pom-classdiagramcontroller.xml $TARGET/ca.mcgill.sel.classdiagram.controller/pom.xml
   cp poms/pom-commons.xml $TARGET/ca.mcgill.sel.commons/pom.xml
   cp poms/pom-core.xml $TARGET/ca.mcgill.sel.core/pom.xml
   cp poms/pom-coreedit.xml $TARGET/ca.mcgill.sel.core.edit/pom.xml
