@@ -280,7 +280,7 @@ wrapCustomNonEmfArtifacts
 createParentPom
 createModulePoms
 copyRuntimeLibs
-patchSources
+#patchSources
 copyHelperScripts
 
 
