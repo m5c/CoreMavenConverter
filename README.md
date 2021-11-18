@@ -39,22 +39,14 @@ Additionally, it is strongly recommended, to **once** update the transitive EMF 
  * Additionally you can also use any IDE that supports maven, as long as you do not need Eclipse specific functionality, like metamodel editing or code generation.
  * This maven command will create a self contained jar: 
  ```mvn clean package``` (or for convenience, use the ```./make``` command)
- * Additionally the build process supports profiles. E.g. if you want a version that powers up the WebCORE backend, compile it with:  
-```mvn clean package -Pwebcore```
+ * Additionally the build process supports profiles. E.g. if you want a version that powers up the REST backend, compile it with:  
+```mvn clean package -Prestbackend```
 
  * Speeded up building:
    * Use the ```-T X``` option, to compile on multiple cores parallel
    * Compile only what you need (e.g.: ```-pl ca.mcgill.sel.core```) and the dependencies (```-am```)  
-  => 0.8 secs instead of 14 secs for ```core```  
+  => 0.8 secs instead of 3 secs for ```core```  
   => 6.9 secs instead of 14 secs for ```touchcore```
-
-### Changelog
-
- * Where did my language controllers go?  
-The converter fuses some packages, to reduce complexity and provide a single point of antry as controller module (useful e.g. for REST-API project). Namely this affects all language controllers. They are all placed in a new project module: ```ca.mcgill.sel.touchcore.controller```
- * Why is the view not working?  
-tl;dr: MT4J is dprecated and no longer supported.  
-[Long answer here.](#unresolved)
 
 ## Upshots
 
@@ -62,15 +54,14 @@ Using the new repository:
 
  * It is no longer necessary to checkout two repositories.
  * The project can be built from command line and with any IDE that supports maven.
- * Custom releases of TouchCORE are supported.
- * Server side build verifications and acceptance tests are feasible.
+ * Custom profiled releases of TouchCORE are supported.
+ * Server side build verifications and acceptance tests are feasible, e.g. for CI pipelines.
 
 ## Important to know
 
- * Any **editor** projects and **expressions.ui/ide/test** are irrelevant for the maven build. The stay in the repository but are not invoked during the build process.
- * The maven built hard wires dependencies to specific eclipse plugin versions into the build. Developpers must absolutely use the identical versions on their side. Otherwise commits are very likely rejected by the server.  
- * Upgrading to new EMF versions is still possible, but all deverloppers must use the same plugin versions. Ideally all developpers use the auto installer, to ensure a sane setup.
- * The structure of the preserved projects slightly deviates from the maven convention. This is mainly to not confuse eclipse, which is to **-bleep-** dumb to just detect a standard maven layout. The sources do not reside in ```src/main/java```, but simply in ```src```. To ensure their inclusion by maven, all preserved projects override the default source location, with a specific entry:  
+ * The maven built hard wires dependencies to specific eclipse plugin versions into the build. Developers must absolutely use the identical versions on their side. Otherwise commits are very likely rejected by the server.  
+ * Upgrading to new EMF versions is still possible, but all developers must use the same plugin versions. Ideally all developers use the auto installer, to ensure a sane setup.
+ * The structure of the preserved projects slightly deviates from the maven convention. This is required to not confuse eclipse, which is to **-bleep-** dumb to just detect a standard maven layout. This means the sources do not reside in ```src/main/java```, but simply in ```src```. To ensure their inclusion by maven, all preserved projects override the default source location, with a specific entry:  
 
 ```xml
 <properties>
@@ -81,25 +72,11 @@ Using the new repository:
 </build>
 ```
 
- * The build is organized into modules. There are less modules than there were eclips eprojects before. The motivation for modules normaly is the possibility to build custom slimmer build variant by smarter module selections. Hoever the can also be used to maintain "ide projects" within a single repo. This is the case here, for all projects that have to remain standalone eclipse projects.
-   * Controller fuses everything that could be fused, and has no justification to be a standalone project
-   * All EMF projects / corresponding edit projects / xtext generated projects are untouched
-   * The gui module fuses core and ram gui.
-   * Generally speaking: Edits depend on EMF projects / controller. Gui depends on everything.
 
-## Possibly easier
+## Possibly easier in future versions
 
-Some EClipse plug-ins seem to be available on official repos now:
+Some Eclipse plug-ins seem to be available on official repos now. So the emfdeps list could possibly be shortened.
 
  * [Xtext](https://mvnrepository.com/artifact/org.eclipse.xtext/org.eclipse.xtext)
  * [EMF](https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.ecore)
 
-## Unresolved
-
- * NavigationBar.java requires patching for general JDK compliance: Line 1156
- * *lib* folder must reside next to jar at launch. Currently manually copied by pom-view.xml
- * ~~Jogl / Gluegen do not fully support maven. Some native libraries have to reside in a lib filder next to the jar, it seems.~~ Native libraries correctly invokled once I set jogl and gluegen to version ~~2.2~~ 2.3.  
-Switching to [2.3 causes GL2 errors on code, because signature has changed](https://stackoverflow.com/questions/7210194/where-can-i-find-the-package-javax-media-opengl). Can fix it, but then also have to patch MT4J Jar.
-   * https://gist.github.com/tysonmalchow/1624599
-   * https://jogamp.org/wiki/index.php/Maven
-   * https://jogamp.org/wiki/index.php?title=JogAmp_JAR_File_Handling#Fat-Jar
