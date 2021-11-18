@@ -1,7 +1,8 @@
 # Custom script to covert the current mavenless TouchCORE project layout into a single maven organized modular repository.
-# Calling this script will asume the legacu repositories are located at:
+# Calling this script will asume the legacy repositories are located at:
 # ~/Code/core
 # ~/Code/touchram
+# ~/Code/touchcore-web/webcore-server
 # Additionally it asumes a correctly setup eclipse modeling version is installed at
 # /Applications/Eclipse\ Modelling/
 # The latter is important, because this script extracts EMF specific jars from the eclipse installation, to craft custom maven artifacts from it. Use the setup-skript to be on the safe side.
