@@ -174,15 +174,12 @@ VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
 function createParentPom() {
 	## print template until flag
 	sed '/DEPEN/q' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG > $TARGET/pom.xml
-	sed '/DEPEN/q' poms/pom-restbackend.xml | grep -v DEPENDENCIES_FLAG > $TARGET/ca.mcgill.sel.restbackend/pom.xml
 
 	## insert generated dependency block
 	cat PARENTDEPS.txt >> $TARGET/pom.xml
-	cat PARENTDEPS.txt >> $TARGET/ca.mcgill.sel.restbackend/pom.xml
 
 	## print template after flag
 	sed -n '/DEPEN/,$p' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/pom.xml
-	sed -n '/DEPEN/,$p' poms/pom-restbackend.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/ca.mcgill.sel.restbackend/pom.xml
 
 	## move the generated pom to the generated repository root.
 #	mv pom.xml $TARGET
@@ -249,6 +246,7 @@ function createModulePoms() {
   cp poms/pom-usecasesedit.xml $TARGET/ca.mcgill.sel.usecases.edit/pom.xml
   cp poms/pom-usecaseslanguage.xml $TARGET/ca.mcgill.sel.usecases.language/pom.xml
   cp poms/pom-view.xml $TARGET/ca.mcgill.sel.touchcore.view/pom.xml
+  cp poms/pom-restbackend.xml $TARGET/ca.mcgill.sel.restbackend/pom.xml
  
 
   # Inject poms for the two resulting merged projects (controller)

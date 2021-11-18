@@ -78,6 +78,7 @@
                 <module>ca.mcgill.sel.ram</module>
                 <module>ca.mcgill.sel.ram.edit</module>
                 <module>ca.mcgill.sel.ram.expressions</module>
+                <module>ca.mcgill.sel.restbackend</module>
                 <!--			<module>ca.mcgill.sel.ram.expressions.ide</module>  -->
                 <!--			<module>ca.mcgill.sel.ram.expressions.ui</module>   -->
                 <!--                <module>ca.mcgill.sel.restif</module>-->
