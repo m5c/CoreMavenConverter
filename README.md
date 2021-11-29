@@ -82,5 +82,5 @@ Some Eclipse plug-ins seem to be available on official repos now. So the emfdeps
 
 ## Known Issues
 
- * ```restbackend``` build profile does not compile. ```core.utils``` package has unsatisfied dependencies to ```emf.commons``` (although properly specified in ```pom.xml```).
+ * ~~```restbackend``` build profile does not compile. ```core.utils``` package has unsatisfied dependencies to ```emf.commons``` (although properly specified in ```pom.xml```).~~ [Fixed](https://stackoverflow.com/a/41448035)
  * ~~Build from IntelliJ is confused by multiple ```src``` entries in ```ram.expressions``` ```pom.xml```.~~ [Fixed!](https://stackoverflow.com/a/58694915)
