@@ -84,3 +84,5 @@ Some Eclipse plug-ins seem to be available on official repos now. So the emfdeps
 
  * ~~```restbackend``` build profile does not compile. ```core.utils``` package has unsatisfied dependencies to ```emf.commons``` (although properly specified in ```pom.xml```).~~ [Fixed](https://stackoverflow.com/a/41448035)
  * ~~Build from IntelliJ is confused by multiple ```src``` entries in ```ram.expressions``` ```pom.xml```.~~ [Fixed!](https://stackoverflow.com/a/58694915)
+ * ```restbackend``` compiles into woring target name: ```WebCORE-REST-exec.jar```.
+ * ```restbackend``` seems tp have missing dependencies at runtime.
