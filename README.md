@@ -80,3 +80,7 @@ Some Eclipse plug-ins seem to be available on official repos now. So the emfdeps
  * [Xtext](https://mvnrepository.com/artifact/org.eclipse.xtext/org.eclipse.xtext)
  * [EMF](https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.ecore)
 
+## Known Issues
+
+ * ```webcore``` build profile does not compile. ```core.utils``` package has unsatisfied dependencies to ```emf.commons``` (although properly specified in ```pom.xml```).
+ * Build from IntelliJ is confused by multiple ```src``` entries in ```ram.expressions``` ```pom.xml```.
