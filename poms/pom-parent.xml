@@ -34,9 +34,6 @@
     <profiles>
         <profile>
             <id>desktop</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <modules>
                 <module>ca.mcgill.sel.touchcore.view</module>
                 <module>ca.mcgill.sel.touchcore.controller</module>
@@ -68,6 +65,9 @@
         </profile>
         <profile>
             <id>restbackend</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <modules>
                 <module>ca.mcgill.sel.touchcore.controller</module>
                 <module>ca.mcgill.sel.classdiagram</module>
@@ -97,26 +97,29 @@
                 <!--                <module>ca.mcgill.sel.usecases.language</module>-->
             </modules>
 
-<!--            <build>-->
-<!--                <plugins>-->
-<!--                    <plugin>-->
-<!--                        <groupId>org.springframework.boot</groupId>-->
-<!--                        <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                        <configuration>-->
-<!--                            <fork>true</fork>-->
-<!--                            <mainClass>ca.mcgill.sel.webcore.WebCore</mainClass>-->
-<!--                        </configuration>-->
-<!--                        <executions>-->
-<!--                            <execution>-->
-<!--                                <goals>-->
-<!--                                    <goal>repackage</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                        </executions>-->
-<!--                    </plugin>-->
-<!--                </plugins>-->
-<!--                <finalName>WebCORE-REST</finalName>-->
-<!--            </build>-->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <fork>true</fork>
+                            <mainClass>ca.mcgill.sel.webcore.WebCore</mainClass>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>exec</classifier>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+                <finalName>WebCORE-REST</finalName>
+            </build>
         </profile>
     </profiles>
 
