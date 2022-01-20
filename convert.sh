@@ -266,6 +266,11 @@ copyHelperScripts() {
   cp helperscripts/* $TARGET
 }
 
+# copies intellij runners into new project (only workspace.xml relevant)
+copyIdeConfigs() {
+  cp -r .idea $TARGET/.idea
+}
+
 ## The actual fusion routine starts here:
 copyAndMergeSources
 fuseFusableProjects
@@ -276,5 +281,6 @@ createParentPom
 createModulePoms
 copyRuntimeLibs
 copyHelperScripts
+copyIdeConfigs
 
 
