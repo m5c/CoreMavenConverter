@@ -72,6 +72,27 @@ Using the new repository:
 </build>
 ```
 
+ * Similar to src dir override, some ```pom``` files override the resource location. This is required so files loaded at runtime are correclty referenced as resources. Namely:  
+```
+./ca.mcgill.sel.ram/bin/models/languages/RestTree.core
+./ca.mcgill.sel.ram/resources/models/Association/Association.core
+./ca.mcgill.sel.ram/resources/models/perspectives/RestInterfacePerspective.core
+./ca.mcgill.sel.ram/resources/models/perspectives/DomainModelling.core
+./ca.mcgill.sel.ram/resources/models/perspectives/DesignModellingWithRAM.core
+./ca.mcgill.sel.ram/resources/models/perspectives/EnvironmentModelling.core
+./ca.mcgill.sel.ram/resources/models/perspectives/RifRamPerspective.core
+./ca.mcgill.sel.ram/resources/models/perspectives/DomainDesignUseCasePerspective.core
+./ca.mcgill.sel.ram/resources/models/perspectives/DomainUseCasePerspective.core
+./ca.mcgill.sel.ram/resources/models/perspectives/UseCasePerspective.core
+./ca.mcgill.sel.ram/resources/models/perspectives/DesignModelling.core
+./ca.mcgill.sel.ram/resources/models/languages/EnvironmentModelLanguage.core
+./ca.mcgill.sel.ram/resources/models/languages/ClassDiagram.core
+./ca.mcgill.sel.ram/resources/models/languages/UseCaseLanguage.core
+./ca.mcgill.sel.ram/resources/models/languages/ClassDiagramLanguage.core
+./ca.mcgill.sel.ram/resources/models/languages/ReusableAspectModels.core
+./ca.mcgill.sel.ram/resources/models/languages/RestTree.core
+```
+
 
 ## Possibly easier in future versions
 
