@@ -1,59 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<modelVersion>4.0.0</modelVersion>
-<artifactId>ramexpressions</artifactId>
-<packaging>jar</packaging>
-<version>1.0.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ramexpressions</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
 
-<parent>
-<groupId>ca.mcgill.sel</groupId>
-<artifactId>touchcore</artifactId>
-<version>1.0.0-SNAPSHOT</version>
-</parent>
+    <parent>
+        <groupId>ca.mcgill.sel</groupId>
+        <artifactId>touchcore</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-<dependencies>
+    <dependencies>
         <dependency>
-                <groupId>ca.mcgill.sel</groupId>
-                <artifactId>ram</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+            <groupId>ca.mcgill.sel</groupId>
+            <artifactId>ram</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
-	<dependency>
-	    <groupId>com.google.inject</groupId>
-	    <artifactId>guice</artifactId>
-	    <version>4.0</version>
-	</dependency>
-	<dependency>
-	    <groupId>friend.of.mcgillsel</groupId>
-	    <artifactId>antlr</artifactId>
-	    <version>3.2.0-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.antlr</groupId>
-	    <artifactId>antlr-runtime</artifactId>
-	    <version>3.5.2</version>
-	</dependency>
-</dependencies>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>friend.of.mcgillsel</groupId>
+            <artifactId>antlr</artifactId>
+            <version>3.2.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-runtime</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+    </dependencies>
 
-<properties>
-  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <maven.compiler.source>1.8</maven.compiler.source>
-  <maven.compiler.target>1.8</maven.compiler.target>
-</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-<build>
-<plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-                <generatedSourcesDirectory>src</generatedSourcesDirectory>
-                <generatedSourcesDirectory>src-gen</generatedSourcesDirectory>
-                <generatedSourcesDirectory>xtend-gen</generatedSourcesDirectory>
-        </configuration>
-    </plugin>
-</plugins>
-</build>
+    <!-- This one is a bit tricky because sources are distributed over three directories within one module. -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src</source>
+                                <source>src-gen</source>
+                                <source>xtend-gen</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
 
