@@ -106,7 +106,6 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.eclipse.emf</groupId>
             <artifactId>org.eclipse.emf.edit</artifactId>
@@ -124,9 +123,24 @@
             <version>1.6.2</version>
         </dependency>
 
+        <!-- this one is patched, no log4shell...-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+
+        <!--Note: we can not use antlr version 4 because the package structure changed. Calls do not work any more.-->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-runtime</artifactId>
+            <version>3.5.2</version>
+        </dependency>
     </dependencies>
-
-
-
 </project>
