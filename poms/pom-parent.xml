@@ -16,6 +16,14 @@
         <version>2.0.5.RELEASE</version>
     </parent>
 
+    <!-- A custom repository where we sotre everything EMF does not offer on the official repos-->
+    <repositories>
+	<repository>
+	    <id>scorelabs</id>
+	    <url>https://www.cs.mcgill.ca/~mschie3/maven2/</url>
+	</repository>
+    </repositories>
+
     <!-- compile with compliance to JDK1.8 -->
     <properties>
         <java.version>1.8</java.version>
