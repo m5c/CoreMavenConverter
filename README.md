@@ -2,7 +2,7 @@
 
 ## About
 
-This repository hosts a script for a (mostly) automated conversion of the core / touchram repositories into a single, maven organized git respoitory.  
+This repository hosts a script for a (mostly) automated conversion of the core / touchram repositories into a single, maven organized git repository.  
 
 ## Philosophy
 
