@@ -32,17 +32,21 @@
     </properties>
 
     <!-- Eclipse plugin dependencies-->
-    <!--This auto generated section declares dependencies, shared by multiple modules, specifically everything EMF related-->
     <dependencies>
-
-        DEPENDENCIES_FLAG
-
+        <dependency>
+            <groupId>ca.mcgill.sel</groupId>
+            <artifactId>common-dependencies</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+            <type>pom</type>
+        </dependency>
     </dependencies>
 
     <profiles>
         <profile>
             <id>desktop</id>
             <modules>
+                <module>ca.mcgill.sel.commondeps</module>
                 <module>ca.mcgill.sel.touchcore.view</module>
                 <module>ca.mcgill.sel.touchcore.controller</module>
                 <module>ca.mcgill.sel.classdiagram</module>
@@ -77,6 +81,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>ca.mcgill.sel.commondeps</module>
                 <module>ca.mcgill.sel.touchcore.controller</module>
                 <module>ca.mcgill.sel.classdiagram</module>
                 <module>ca.mcgill.sel.classdiagram.edit</module>

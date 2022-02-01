@@ -1,0 +1,16 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ca.mcgill.sel</groupId>
+    <artifactId>common-dependencies</artifactId>
+    <packaging>pom</packaging>
+    <name>Common Dependencies</name>
+    <version>1.0</version>
+
+
+    <!-- Eclipse plugin dependencies-->
+    <!--This auto generated section declares dependencies, shared by multiple modules, specifically everything EMF related-->
+    <dependencies>
+        DEPENDENCIES_FLAG
+    </dependencies>
+
+</project>
