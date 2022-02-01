@@ -171,20 +171,20 @@ VERSION=$(echo -n "$i" | cut -f7 -d '/' | cut -f2 -d '_' | sed 's/\.jar//')
 }
 
 # merges the generated maven dependency block into the parent pom template AND the rest backend pom template
-function createParentPom() {
+function createCommonDepsPom() {
+	# prepare new empty target directory
+	mkdir -p $TARGET/ca.mcgill.sel.commondeps
+
 	## print template until flag
-	sed '/DEPEN/q' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG > $TARGET/pom.xml
+	sed '/DEPEN/q' poms/pom-commondeps.xml | grep -v DEPENDENCIES_FLAG > $TARGET/ca.mcgill.sel.commondeps/pom.xml
 
 	## insert generated dependency block
-	cat PARENTDEPS.txt >> $TARGET/pom.xml
+	cat PARENTDEPS.txt >> $TARGET/ca.mcgill.sel.commondeps/pom.xml
 
 	## print template after flag
-	sed -n '/DEPEN/,$p' poms/pom-parent.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/pom.xml
+	sed -n '/DEPEN/,$p' poms/pom-commondeps.xml | grep -v DEPENDENCIES_FLAG >> $TARGET/ca.mcgill.sel.commondeps/pom.xml
 
-	## move the generated pom to the generated repository root.
-#	mv pom.xml $TARGET
-
-	echo " * Full EMF dependency list fused into parent template, stored at $TARGET/pom.xml"
+	echo " * Full EMF dependency list fused into common deps template, stored at $TARGET/ca.mcgill.sel.commondeps/pom.xml"
 }
 
 function wrapCustomNonEmfArtifacts() {
@@ -221,6 +221,7 @@ function wrapCustomNonEmfArtifacts() {
 function createModulePoms() {
 
   # Inject poms for all copied projects	
+  cp poms/pom-parent.xml $TARGET/pom.xml
   cp poms/pom-classdiagram.xml $TARGET/ca.mcgill.sel.classdiagram/pom.xml
   cp poms/pom-classdiagramedit.xml $TARGET/ca.mcgill.sel.classdiagram.edit/pom.xml
   cp poms/pom-classdiagramcontroller.xml $TARGET/ca.mcgill.sel.classdiagram.controller/pom.xml
@@ -277,7 +278,7 @@ fuseFusableProjects
 prepareRestBackendModule
 mavenizeEmf
 wrapCustomNonEmfArtifacts
-createParentPom
+createCommonDepsPom
 createModulePoms
 copyRuntimeLibs
 copyHelperScripts
