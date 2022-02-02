@@ -3,17 +3,19 @@
 
 <modelVersion>4.0.0</modelVersion>
 <artifactId>touchcoreview</artifactId>
+<groupId>ca.mcgill.sel</groupId>
 <packaging>jar</packaging>
 <version>1.0.0-SNAPSHOT</version>
 
-<parent>
-<groupId>ca.mcgill.sel</groupId>
-<artifactId>touchcore</artifactId>
-<version>1.0.0-SNAPSHOT</version>
-</parent>
+<!-- A custom repository where we store everything EMF does not offer on the official repos-->
+<repositories>
+    <repository>
+        <id>scorelabs</id>
+        <url>https://www.cs.mcgill.ca/~mschie3/maven2/</url>
+    </repository>
+</repositories>
 
 <dependencies>
-
 <!-- TODO: Make sure UI is actually split into MT4J-dependent trash and proper controller classes (e.g. relevant for backend build) -->
         <dependency>
                 <groupId>friend.of.mcgillsel</groupId>
@@ -93,6 +95,8 @@
 </dependencies>
 
 <properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
     <skip.assembly>false</skip.assembly>
   <src.dir>src</src.dir>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
