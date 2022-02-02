@@ -167,7 +167,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <fork>true</fork>
+                    <!-- Disable thread forking, so debugging breakpoints work-->
+                    <fork>false</fork>
+                    <skip>false</skip>
                     <mainClass>ca.mcgill.sel.webcore.WebCore</mainClass>
                 </configuration>
                 <executions>
@@ -179,6 +181,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>WebCORE-REST</finalName>
+        <finalName>touchcore-backend</finalName>
     </build>
 </project>
