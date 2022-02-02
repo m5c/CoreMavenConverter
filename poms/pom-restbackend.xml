@@ -9,15 +9,22 @@
 
     <name>webCore</name>
 
-    <!-- A custom repository where we sotre everything EMF does not offer on the official repos-->
-<repositories>
-    <repository>
-        <id>scorelabs</id>
-        <url>https://www.cs.mcgill.ca/~mschie3/maven2/</url>
-    </repository>
-</repositories>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/>
+    </parent>
 
-<dependencies>
+    <!-- A custom repository where we store everything EMF does not offer on the official repos-->
+    <repositories>
+        <repository>
+            <id>scorelabs</id>
+            <url>https://www.cs.mcgill.ca/~mschie3/maven2/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
         <dependency>
             <groupId>ca.mcgill.sel</groupId>
             <artifactId>common-dependencies</artifactId>
@@ -152,4 +159,29 @@
             <version>3.5.2</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>ca.mcgill.sel.webcore.WebCore</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>exec</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <finalName>WebCORE-REST</finalName>
+    </build>
 </project>
