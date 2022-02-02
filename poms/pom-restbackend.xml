@@ -175,9 +175,6 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <configuration>
-                            <classifier>exec</classifier>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
