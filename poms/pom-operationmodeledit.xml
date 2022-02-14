@@ -8,7 +8,7 @@
 <version>1.0.0-SNAPSHOT</version>
 
 
-<!-- A custom repository where we sotre everything EMF does not offer on the official repos-->
+<!-- A custom repository where we store everything EMF does not offer on the official repos-->
 <repositories>
     <repository>
         <id>scorelabs</id>
