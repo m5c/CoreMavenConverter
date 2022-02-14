@@ -6,6 +6,13 @@
     <name>Common Dependencies</name>
     <version>1.0</version>
 
+    <!-- Our own maven repo for everything the EMF people did not upload to the official maven servers for whatever reason. -->
+    <repositories>
+        <repository>
+            <id>scorelabs</id>
+            <url>https://www.cs.mcgill.ca/~mschie3/maven2/</url>
+        </repository>
+    </repositories>
 
     <!-- Eclipse plugin dependencies-->
     <!--This auto generated section declares dependencies, shared by multiple modules, specifically everything EMF related-->
