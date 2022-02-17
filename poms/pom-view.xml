@@ -78,13 +78,13 @@
 	<dependency>
 	    <groupId>org.jogamp.jogl</groupId>
 	    <artifactId>jogl-all-main</artifactId>
-	    <version>2.2.0</version>
+	    <version>${opengl.version}</version>
 	</dependency>
 
 	<dependency>
 	    <groupId>org.jogamp.gluegen</groupId>
 	    <artifactId>gluegen-rt-main</artifactId>
-	    <version>2.2.0</version>
+	    <version>${opengl.version}</version>
 	</dependency>
 
 	<dependency>
@@ -95,6 +95,12 @@
 </dependencies>
 
 <properties>
+    <!--        Compiles, finds jars at runtime, but complains about missing library methods at runtime. Possibly due to MT4J.-->
+    <opengl.version>2.1.5</opengl.version>
+    <!--        <opengl.version>2.1.5-01</opengl.version>-->
+    <!--        <opengl.version>2.1.5</opengl.version>-->
+    <!--        <opengl.version>2.1.4</opengl.version>-->
+
      <maven.compiler.source>1.8</maven.compiler.source>
      <maven.compiler.target>1.8</maven.compiler.target>
     <skip.assembly>false</skip.assembly>
